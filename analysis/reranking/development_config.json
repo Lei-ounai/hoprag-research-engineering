@@ -1,0 +1,27 @@
+{
+  "threads": 2,
+  "batch_size": 16,
+  "unified_limit": 256,
+  "template": "title-newline-original-chunk-body/v1",
+  "aggregation": "maximum over all original chunks, one rank per parent",
+  "fusion_k": 60,
+  "candidate_branch_depth": 100,
+  "top_k": 10,
+  "development_gate_hours": 4,
+  "model_ids": {
+    "minilm": "Xenova/ms-marco-MiniLM-L-6-v2",
+    "jina": "jinaai/jina-reranker-v1-turbo-en"
+  },
+  "development_modes": [
+    "minilm:unified",
+    "jina:unified",
+    "jina:native"
+  ],
+  "seed": 42,
+  "stages": [
+    "dev_5",
+    "dev_20",
+    "dev_100"
+  ],
+  "heldout_policy": "Use only after selection and config freeze; no heldout-driven tuning"
+}

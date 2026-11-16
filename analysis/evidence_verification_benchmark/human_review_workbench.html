@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HopRAG 人工证据核验工作台</title>
+  <link rel="stylesheet" href="/human_review_workbench.css">
+  <script defer src="/human_review_workbench.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="identity">
+      <span class="wordmark">HopRAG</span>
+      <h1>人工证据核验工作台</h1>
+    </div>
+    <div class="header-actions" id="header-actions" hidden>
+      <div class="progress-block">
+        <span id="progress-text"></span>
+        <progress id="progress" value="0" max="350" aria-labelledby="progress-text"></progress>
+      </div>
+      <span id="annotator-name" class="annotator-name"></span>
+      <button type="button" class="button quiet" id="switch-annotator">切换标注者</button>
+      <button type="button" class="button secondary" id="export-csv">导出 CSV</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <h2 id="welcome-title">打开独立标注</h2>
+      <p>输入自己的标注者标识。再次使用同一标识可继续上次保存的记录。</p>
+      <form id="sign-in">
+        <label for="annotator">标注者标识</label>
+        <div class="entry-row">
+          <input id="annotator" name="annotator" type="text" required autocomplete="off" spellcheck="false">
+          <button id="open-session" class="button primary" type="submit" disabled>打开工作台</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="workspace" aria-label="审查工作区" hidden>
+      <nav class="navigation" aria-label="案例导航">
+        <div class="navigation-title">
+          <span>当前案例</span>
+          <strong id="case-number">—</strong>
+          <span id="case-state"></span>
+        </div>
+        <div class="nav-controls">
+          <button type="button" class="button quiet" id="previous-case">← 上一题</button>
+          <button type="button" class="button quiet" id="next-case">下一题 →</button>
+          <div class="list-control">
+            <label for="case-filter">筛选</label>
+            <select id="case-filter">
+              <option value="all">全部案例</option>
+              <option value="unfinished">未完成</option>
+              <option value="complete">已完成</option>
+            </select>
+            <label class="visually-hidden" for="case-list">案例列表</label>
+            <select id="case-list"></select>
+          </div>
+          <form id="jump-case" class="jump-form">
+            <label class="visually-hidden" for="case-target">输入案例编号</label>
+            <input id="case-target" type="text" placeholder="evb-0001" autocomplete="off" spellcheck="false">
+            <button type="submit" class="button secondary" id="jump-button">跳转</button>
+          </form>
+        </div>
+      </nav>
+      <div class="work-area">
+        <section id="materials" class="pane materials" aria-labelledby="materials-title">
+          <div class="pane-heading">
+            <h2 id="materials-title">案例材料</h2>
+          </div>
+          <article class="question">
+            <h3>原始问题</h3>
+            <div id="case-question"></div>
+          </article>
+          <p class="window-rule">折叠原始 Chunk 仅供定位，不得将评分窗口外的内容当作有效评分证据。</p>
+          <div id="case-groups"></div>
+        </section>
+        <section class="pane annotation" aria-labelledby="annotation-title">
+          <div class="pane-heading">
+            <h2 id="annotation-title">人工标注</h2>
+            <button type="submit" form="review-form" class="button primary" id="save-review">保存并标记完成</button>
+          </div>
+          <form id="review-form">
+            <div id="annotation-fields" class="choices"></div>
+            <label for="reason">判断理由 <span class="field-name">reason</span></label>
+            <textarea id="reason" name="reason" rows="5" required></textarea>
+            <label for="witness-ref">见证编号 <span class="field-name">witness_ref</span></label>
+            <textarea id="witness-ref" name="witness_ref" rows="1" required
+              aria-describedby="witness-guide" spellcheck="false" placeholder="如 C1"></textarea>
+            <label for="witness-quote">原文见证 <span class="field-name">witness_quote</span></label>
+            <textarea id="witness-quote" name="witness_quote" rows="4" aria-describedby="witness-guide"
+              spellcheck="false"></textarea>
+            <p id="witness-guide" class="field-help">
+              引用该编号可见窗口中的连续原文，也可将其他片段编号写入理由。确实无可引用原文时，见证编号填 NONE、引文留空，并在理由中说明。
+            </p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <div class="message" id="status" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

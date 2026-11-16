@@ -1,0 +1,156 @@
+{
+  "scope": "271 frozen Tune questions; Validation and null cohorts do not select parameters",
+  "split": "analysis/besa_v0/run/development_split.json",
+  "tune_queries": 271,
+  "variants": {
+    "s3-q1": {
+      "seed_count": 3,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q1",
+      "path_decay": 0.62
+    },
+    "s3-q2": {
+      "seed_count": 3,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q2",
+      "path_decay": 0.62
+    },
+    "s3-q3": {
+      "seed_count": 3,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q3",
+      "path_decay": 0.62
+    },
+    "s5-q1": {
+      "seed_count": 5,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q1",
+      "path_decay": 0.62
+    },
+    "s5-q2": {
+      "seed_count": 5,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q2",
+      "path_decay": 0.62
+    },
+    "s5-q3": {
+      "seed_count": 5,
+      "max_hops": 2,
+      "max_queries": 5,
+      "first_hop_queries": 3,
+      "max_new_documents": 16,
+      "hits_per_query": 7,
+      "second_hop_seeds": 3,
+      "second_hop_min_score": 0.35,
+      "query_style": "q3",
+      "path_decay": 0.62
+    }
+  },
+  "candidate_only_fixed_depths": [
+    15,
+    30,
+    50,
+    100
+  ],
+  "seed_variants": {
+    "h1": "s3-q3",
+    "h2": "s3-q3"
+  },
+  "seed_choice": "max Tune candidate-complete then recall, fewer candidates, stable ID; E3 is exact E4 prefix",
+  "fixed_winner": {
+    "variant": "fixed100",
+    "hops": 0,
+    "mode": "rrf",
+    "expansion_weight": 0.88,
+    "anchor": 0
+  },
+  "question_winner": {
+    "variant": "question_only",
+    "hops": 1,
+    "mode": "rrf",
+    "expansion_weight": 0.88,
+    "anchor": 0
+  },
+  "fusions": {
+    "rrf": {
+      "variant": "s3-q1",
+      "hops": 1,
+      "mode": "rrf",
+      "expansion_weight": 0.88,
+      "anchor": 0
+    },
+    "anchor": {
+      "variant": "s3-q1",
+      "hops": 1,
+      "mode": "anchor",
+      "expansion_weight": 0.88,
+      "anchor": 5
+    }
+  },
+  "lexical_winner": {
+    "variant": "s3-q1",
+    "hops": 1,
+    "mode": "rrf",
+    "expansion_weight": 0.88,
+    "anchor": 0
+  },
+  "jina_winner": {
+    "variant": "s3-q1",
+    "hops": 1,
+    "mode": "jina",
+    "expansion_weight": 0.88,
+    "anchor": 0,
+    "jina_strength": 0.1
+  },
+  "jina_max_new_pairs_per_question": 8,
+  "jina_strength_grid": [
+    0.1,
+    0.2,
+    0.4
+  ],
+  "fusion_weights": [
+    0.88,
+    0.92,
+    0.96,
+    1.0
+  ],
+  "anchor_sizes": [
+    0,
+    5,
+    7,
+    8
+  ],
+  "fusion_ties": "more complete, fewer regressions, more recoveries, candidate complete, fewer candidates, shallower hops, lower Jina strength, smaller anchor, smaller weight, stable variant",
+  "lexical_seed_no_planner": true,
+  "dense_new_query_embeddings": 0
+}

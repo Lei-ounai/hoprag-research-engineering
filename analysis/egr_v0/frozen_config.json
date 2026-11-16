@@ -1,0 +1,33 @@
+{
+  "tune_ids_sha_source": "analysis/besa_v0/run/development_split.json",
+  "tune_count": 271,
+  "thresholds": {
+    "E3": {
+      "arm": "E3",
+      "cap": 1,
+      "quality": 0.9,
+      "margin": 0.0,
+      "novelty": 0.8,
+      "complete": 201,
+      "recovered": 0,
+      "regressed": 0,
+      "replacements": 2
+    },
+    "E4": {
+      "arm": "E4",
+      "cap": 1,
+      "quality": 0.9,
+      "margin": 0.7,
+      "novelty": 0.8,
+      "complete": 201,
+      "recovered": 0,
+      "regressed": 0,
+      "replacements": 0
+    }
+  },
+  "selected_arm": "E4-B1",
+  "e5_thresholds": "E4 thresholds fixed for a matched one-hop candidate ablation",
+  "tie_order": "highest complete, fewer regressions, more recoveries, fewer swaps, lower cap, higher quality and margin, lower overlap",
+  "chunk_budget_per_parent": 3,
+  "expansion": "archived R8 E5 s3-q1 first hop"
+}

@@ -1,0 +1,528 @@
+{
+  "split_counts": {
+    "answerable_dev": 451,
+    "answerable_heldout": 1804,
+    "null_dev": 60,
+    "null_heldout": 241
+  },
+  "historical_answerable_dev_cache_queries": 100,
+  "pilot_query_ids": [
+    "q-0080",
+    "q-0106",
+    "q-0125",
+    "q-0296",
+    "q-0326",
+    "q-0342",
+    "q-0364",
+    "q-0461",
+    "q-0780",
+    "q-0784",
+    "q-0836",
+    "q-0864",
+    "q-0954",
+    "q-1668",
+    "q-1895",
+    "q-2047",
+    "q-2229",
+    "q-2258",
+    "q-2390",
+    "q-2535"
+  ],
+  "split_sha256": "527ac2f6689838f7fa437d363c12fb2ce0a8d1e6c2b647ca595a69635a0b1e34",
+  "candidate_manifest_sha256": "bb6e695d54e2af74266eecaae5d09c28ddc884cadf0d066aea647c5a7617723f",
+  "candidate_content_and_original_ranks": "../reranking/candidate_pool_manifest.json",
+  "candidate_membership": "candidate_membership.jsonl",
+  "candidate_membership_sha256": "c602b96fedc6bca9f19034398cb0356aa2b43f078febaa59aaa7e57157e6a03f",
+  "model": {
+    "model_id": "jinaai/jina-reranker-v1-turbo-en",
+    "revision": "b8c14f4e723d9e0aab4732a7b7b93741eeeb77c2",
+    "model_sha256": "3defdef1ae34e119bd704216087743e79665934c96aebabcb6077c239dc3ae66",
+    "tokenizer_sha256": "0046da43cc8c424b317f56b092b0512aaaa65c4f925d2f16af9d9eeb4d0ef902",
+    "effective_max_tokens": 256,
+    "context_mode": "unified",
+    "truncation_strategy": "longest_first",
+    "truncation_side": "right",
+    "batch_size": 16
+  },
+  "threads": 4,
+  "cpu_priority": "below normal on Windows",
+  "template": "title-newline-original-chunk-body/v1",
+  "pool_policy": "all original chunks, max raw score per parent",
+  "weights_rrf": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "weight_jina": 1,
+  "rrf_k": 60,
+  "rank_policy": "RRF and Jina ranks are compact within the same selected pool; original global ranks are retained in metadata; missing lane contributes zero",
+  "development_scoring_policy": "DEV_SUPERSET",
+  "scoring_scope": "RRF Top50 union BM25 Top50 union Dense Top50; POLICY_UNION is the exact smaller six-policy union",
+  "cohort_pairs": {
+    "answerable_dev": {
+      "P1": {
+        "candidate_documents": 9020,
+        "total_pairs": 42943,
+        "unique_pairs": 42943,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "P2": {
+        "candidate_documents": 13530,
+        "total_pairs": 65319,
+        "unique_pairs": 65319,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "P3": {
+        "candidate_documents": 22550,
+        "total_pairs": 107394,
+        "unique_pairs": 107394,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "P4": {
+        "candidate_documents": 6445,
+        "total_pairs": 28927,
+        "unique_pairs": 28927,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "P5": {
+        "candidate_documents": 9659,
+        "total_pairs": 43479,
+        "unique_pairs": 43479,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "P6": {
+        "candidate_documents": 16775,
+        "total_pairs": 77718,
+        "unique_pairs": 77718,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "DEV_SUPERSET": {
+        "candidate_documents": 36403,
+        "total_pairs": 167176,
+        "unique_pairs": 167176,
+        "missing_pairs": 0,
+        "queries": 451
+      },
+      "POLICY_UNION": {
+        "candidate_documents": 25405,
+        "total_pairs": 119786,
+        "unique_pairs": 119786,
+        "missing_pairs": 0,
+        "queries": 451
+      }
+    },
+    "answerable_heldout": {
+      "P1": {
+        "candidate_documents": 36080,
+        "total_pairs": 172403,
+        "unique_pairs": 172403,
+        "missing_pairs": 38157,
+        "queries": 1804
+      },
+      "P2": {
+        "candidate_documents": 54120,
+        "total_pairs": 261955,
+        "unique_pairs": 261955,
+        "missing_pairs": 112837,
+        "queries": 1804
+      },
+      "P3": {
+        "candidate_documents": 90200,
+        "total_pairs": 432826,
+        "unique_pairs": 432826,
+        "missing_pairs": 264653,
+        "queries": 1804
+      },
+      "P4": {
+        "candidate_documents": 26048,
+        "total_pairs": 118049,
+        "unique_pairs": 118049,
+        "missing_pairs": 0,
+        "queries": 1804
+      },
+      "P5": {
+        "candidate_documents": 38795,
+        "total_pairs": 177141,
+        "unique_pairs": 177141,
+        "missing_pairs": 0,
+        "queries": 1804
+      },
+      "P6": {
+        "candidate_documents": 67073,
+        "total_pairs": 312485,
+        "unique_pairs": 312485,
+        "missing_pairs": 135344,
+        "queries": 1804
+      },
+      "DEV_SUPERSET": {},
+      "POLICY_UNION": {}
+    },
+    "null_dev": {
+      "P1": {
+        "candidate_documents": 1200,
+        "total_pairs": 6574,
+        "unique_pairs": 6574,
+        "missing_pairs": 5543,
+        "queries": 60
+      },
+      "P2": {
+        "candidate_documents": 1800,
+        "total_pairs": 9384,
+        "unique_pairs": 9384,
+        "missing_pairs": 7921,
+        "queries": 60
+      },
+      "P3": {
+        "candidate_documents": 3000,
+        "total_pairs": 14877,
+        "unique_pairs": 14877,
+        "missing_pairs": 12584,
+        "queries": 60
+      },
+      "P4": {
+        "candidate_documents": 1061,
+        "total_pairs": 5408,
+        "unique_pairs": 5408,
+        "missing_pairs": 4623,
+        "queries": 60
+      },
+      "P5": {
+        "candidate_documents": 1570,
+        "total_pairs": 7912,
+        "unique_pairs": 7912,
+        "missing_pairs": 6727,
+        "queries": 60
+      },
+      "P6": {
+        "candidate_documents": 2588,
+        "total_pairs": 12682,
+        "unique_pairs": 12682,
+        "missing_pairs": 10705,
+        "queries": 60
+      },
+      "DEV_SUPERSET": {},
+      "POLICY_UNION": {}
+    },
+    "null_heldout": {
+      "P1": {
+        "candidate_documents": 4820,
+        "total_pairs": 25819,
+        "unique_pairs": 25819,
+        "missing_pairs": 25819,
+        "queries": 241
+      },
+      "P2": {
+        "candidate_documents": 7230,
+        "total_pairs": 37945,
+        "unique_pairs": 37945,
+        "missing_pairs": 37945,
+        "queries": 241
+      },
+      "P3": {
+        "candidate_documents": 12050,
+        "total_pairs": 60171,
+        "unique_pairs": 60171,
+        "missing_pairs": 60171,
+        "queries": 241
+      },
+      "P4": {
+        "candidate_documents": 4255,
+        "total_pairs": 21470,
+        "unique_pairs": 21470,
+        "missing_pairs": 21470,
+        "queries": 241
+      },
+      "P5": {
+        "candidate_documents": 6292,
+        "total_pairs": 31101,
+        "unique_pairs": 31101,
+        "missing_pairs": 31101,
+        "queries": 241
+      },
+      "P6": {
+        "candidate_documents": 10298,
+        "total_pairs": 50135,
+        "unique_pairs": 50135,
+        "missing_pairs": 50135,
+        "queries": 241
+      },
+      "DEV_SUPERSET": {},
+      "POLICY_UNION": {}
+    }
+  },
+  "projections": {
+    "P1": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 38157,
+      "remaining_null_dev_pairs": 5543,
+      "remaining_null_heldout_pairs": 25819,
+      "dev_and_heldout_seconds": 1401.739371380807,
+      "dev_heldout_and_all_null_seconds": 2553.8569426061354
+    },
+    "P2": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 112837,
+      "remaining_null_dev_pairs": 7921,
+      "remaining_null_heldout_pairs": 37945,
+      "dev_and_heldout_seconds": 4145.191326584797,
+      "dev_heldout_and_all_null_seconds": 5830.12929360925
+    },
+    "P3": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 264653,
+      "remaining_null_dev_pairs": 12584,
+      "remaining_null_heldout_pairs": 60171,
+      "dev_and_heldout_seconds": 9722.319098829696,
+      "dev_heldout_and_all_null_seconds": 12395.05406134799
+    },
+    "P4": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 0,
+      "remaining_null_dev_pairs": 4623,
+      "remaining_null_heldout_pairs": 21470,
+      "dev_and_heldout_seconds": 0.0,
+      "dev_heldout_and_all_null_seconds": 958.5550598170556
+    },
+    "P5": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 0,
+      "remaining_null_dev_pairs": 6727,
+      "remaining_null_heldout_pairs": 31101,
+      "dev_and_heldout_seconds": 0.0,
+      "dev_heldout_and_all_null_seconds": 1389.6531944490698
+    },
+    "P6": {
+      "remaining_dev_pairs": 0,
+      "remaining_heldout_pairs": 135344,
+      "remaining_null_dev_pairs": 10705,
+      "remaining_null_heldout_pairs": 50135,
+      "dev_and_heldout_seconds": 4972.01073145593,
+      "dev_heldout_and_all_null_seconds": 7207.035061324847
+    }
+  },
+  "measured_pairs_per_second": 27.22118018445384,
+  "seconds_left_at_plan": 3205.020417,
+  "budget_clock": {
+    "started_utc": "2026-11-11T12:46:30.348958+00:00",
+    "deadline_utc": "2026-11-11T16:46:30.348958+00:00",
+    "budget_hours": 4
+  },
+  "initial_preflight": {
+    "answerable_dev": {
+      "P1": {
+        "candidate_documents": 9020,
+        "total_pairs": 42943,
+        "unique_pairs": 42943,
+        "missing_pairs": 33313,
+        "queries": 451
+      },
+      "P2": {
+        "candidate_documents": 13530,
+        "total_pairs": 65319,
+        "unique_pairs": 65319,
+        "missing_pairs": 50599,
+        "queries": 451
+      },
+      "P3": {
+        "candidate_documents": 22550,
+        "total_pairs": 107394,
+        "unique_pairs": 107394,
+        "missing_pairs": 83338,
+        "queries": 451
+      },
+      "P4": {
+        "candidate_documents": 6445,
+        "total_pairs": 28927,
+        "unique_pairs": 28927,
+        "missing_pairs": 22306,
+        "queries": 451
+      },
+      "P5": {
+        "candidate_documents": 9659,
+        "total_pairs": 43479,
+        "unique_pairs": 43479,
+        "missing_pairs": 33486,
+        "queries": 451
+      },
+      "P6": {
+        "candidate_documents": 16775,
+        "total_pairs": 77718,
+        "unique_pairs": 77718,
+        "missing_pairs": 60137,
+        "queries": 451
+      },
+      "DEV_SUPERSET": {
+        "candidate_documents": 36403,
+        "total_pairs": 167176,
+        "unique_pairs": 167176,
+        "missing_pairs": 129619,
+        "queries": 451
+      }
+    },
+    "answerable_heldout": {
+      "P1": {
+        "candidate_documents": 36080,
+        "total_pairs": 172403,
+        "unique_pairs": 172403,
+        "missing_pairs": 172403,
+        "queries": 1804
+      },
+      "P2": {
+        "candidate_documents": 54120,
+        "total_pairs": 261955,
+        "unique_pairs": 261955,
+        "missing_pairs": 261955,
+        "queries": 1804
+      },
+      "P3": {
+        "candidate_documents": 90200,
+        "total_pairs": 432826,
+        "unique_pairs": 432826,
+        "missing_pairs": 432826,
+        "queries": 1804
+      },
+      "P4": {
+        "candidate_documents": 26048,
+        "total_pairs": 118049,
+        "unique_pairs": 118049,
+        "missing_pairs": 118049,
+        "queries": 1804
+      },
+      "P5": {
+        "candidate_documents": 38795,
+        "total_pairs": 177141,
+        "unique_pairs": 177141,
+        "missing_pairs": 177141,
+        "queries": 1804
+      },
+      "P6": {
+        "candidate_documents": 67073,
+        "total_pairs": 312485,
+        "unique_pairs": 312485,
+        "missing_pairs": 312485,
+        "queries": 1804
+      },
+      "DEV_SUPERSET": {}
+    },
+    "null_dev": {
+      "P1": {
+        "candidate_documents": 1200,
+        "total_pairs": 6574,
+        "unique_pairs": 6574,
+        "missing_pairs": 5543,
+        "queries": 60
+      },
+      "P2": {
+        "candidate_documents": 1800,
+        "total_pairs": 9384,
+        "unique_pairs": 9384,
+        "missing_pairs": 7921,
+        "queries": 60
+      },
+      "P3": {
+        "candidate_documents": 3000,
+        "total_pairs": 14877,
+        "unique_pairs": 14877,
+        "missing_pairs": 12584,
+        "queries": 60
+      },
+      "P4": {
+        "candidate_documents": 1061,
+        "total_pairs": 5408,
+        "unique_pairs": 5408,
+        "missing_pairs": 4623,
+        "queries": 60
+      },
+      "P5": {
+        "candidate_documents": 1570,
+        "total_pairs": 7912,
+        "unique_pairs": 7912,
+        "missing_pairs": 6727,
+        "queries": 60
+      },
+      "P6": {
+        "candidate_documents": 2588,
+        "total_pairs": 12682,
+        "unique_pairs": 12682,
+        "missing_pairs": 10705,
+        "queries": 60
+      },
+      "DEV_SUPERSET": {}
+    },
+    "null_heldout": {
+      "P1": {
+        "candidate_documents": 4820,
+        "total_pairs": 25819,
+        "unique_pairs": 25819,
+        "missing_pairs": 25819,
+        "queries": 241
+      },
+      "P2": {
+        "candidate_documents": 7230,
+        "total_pairs": 37945,
+        "unique_pairs": 37945,
+        "missing_pairs": 37945,
+        "queries": 241
+      },
+      "P3": {
+        "candidate_documents": 12050,
+        "total_pairs": 60171,
+        "unique_pairs": 60171,
+        "missing_pairs": 60171,
+        "queries": 241
+      },
+      "P4": {
+        "candidate_documents": 4255,
+        "total_pairs": 21470,
+        "unique_pairs": 21470,
+        "missing_pairs": 21470,
+        "queries": 241
+      },
+      "P5": {
+        "candidate_documents": 6292,
+        "total_pairs": 31101,
+        "unique_pairs": 31101,
+        "missing_pairs": 31101,
+        "queries": 241
+      },
+      "P6": {
+        "candidate_documents": 10298,
+        "total_pairs": 50135,
+        "unique_pairs": 50135,
+        "missing_pairs": 50135,
+        "queries": 241
+      },
+      "DEV_SUPERSET": {}
+    }
+  },
+  "execution_summary": {
+    "state": "complete",
+    "verified_utc": "2026-11-11T16:17:10.284588+00:00",
+    "frozen_config_sha256": "95efb0afe39fc887a61b6fa3de54dd6b93f45a31ffc1addda342bc9188ab2fb9",
+    "development_queries": 451,
+    "heldout_queries": 1804,
+    "no_answer_queries": 301,
+    "unique_new_pairs": 344588,
+    "historical_pair_hits_across_completed_scopes": 38742,
+    "cache_checkpoints": 2576,
+    "total_model_inference_seconds": 11512.129649105074,
+    "total_process_wall_seconds": 12429.914049600018,
+    "budget_elapsed_at_completion_seconds": 12568.719477,
+    "budget_remaining_at_completion_seconds": 1831.280523,
+    "model_downloaded": false,
+    "bge_m3_embedding_requests": 0,
+    "performance_files": [
+      "pilot_performance.json",
+      "development_performance.json",
+      "heldout_performance.json",
+      "no-answer_performance.json"
+    ]
+  }
+}

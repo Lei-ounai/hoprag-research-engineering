@@ -1,0 +1,133 @@
+{
+  "state": "frozen",
+  "frozen_utc": "2026-11-11T14:07:29.101220+00:00",
+  "policy": "P5",
+  "scheme": "B",
+  "weight_rrf": 2,
+  "weight_jina": 1,
+  "rrf_k": 60,
+  "template": "title-newline-original-chunk-body/v1",
+  "model": {
+    "model_id": "jinaai/jina-reranker-v1-turbo-en",
+    "revision": "b8c14f4e723d9e0aab4732a7b7b93741eeeb77c2",
+    "model_sha256": "3defdef1ae34e119bd704216087743e79665934c96aebabcb6077c239dc3ae66",
+    "tokenizer_sha256": "0046da43cc8c424b317f56b092b0512aaaa65c4f925d2f16af9d9eeb4d0ef902",
+    "effective_max_tokens": 256,
+    "context_mode": "unified",
+    "truncation_strategy": "longest_first",
+    "truncation_side": "right",
+    "batch_size": 16
+  },
+  "split_sha256": "527ac2f6689838f7fa437d363c12fb2ce0a8d1e6c2b647ca595a69635a0b1e34",
+  "candidate_manifest_sha256": "bb6e695d54e2af74266eecaae5d09c28ddc884cadf0d066aea647c5a7617723f",
+  "development_selection_sha256": "1fa081d8134845121e1a4b6a2e89ab61bf13269514584f177bc64073f4ecf6fe",
+  "development_checkpoint_sha256": "0717d562ae917f0a60aa019756fb48326878e183701e199da918acd3d40cba87",
+  "selection_cohort": "answerable_dev",
+  "selection_query_count": 451,
+  "budget_tier": "all_null",
+  "eligible_pools": [
+    "P1",
+    "P4",
+    "P5"
+  ],
+  "budget_seconds_remaining_before_evaluation": 9547.988609,
+  "measured_pairs_per_second": 27.22118018445384,
+  "estimated_remaining_seconds": {
+    "P1": {
+      "all_null": 7485.531436156147,
+      "dev_null": 6537.042067765523,
+      "heldout_only": 6333.413864930819
+    },
+    "P2": {
+      "all_null": 11308.143067793886,
+      "dev_null": 9914.19174963353,
+      "heldout_only": 9623.205100769434
+    },
+    "P3": {
+      "all_null": 18573.074222870764,
+      "dev_null": 16362.62634396638,
+      "heldout_only": 15900.339260352468
+    },
+    "P4": {
+      "all_null": 5295.214940104627,
+      "dev_null": 4506.4908710335285,
+      "heldout_only": 4336.6598802875715
+    },
+    "P5": {
+      "all_null": 7897.1227016369385,
+      "dev_null": 6754.593252536787,
+      "heldout_only": 6507.469507187869
+    },
+    "P6": {
+      "all_null": 13714.504568512717,
+      "dev_null": 11872.740190176453,
+      "heldout_only": 11479.480238643799
+    }
+  },
+  "cost_margin": 1.05,
+  "reserve_seconds": 180,
+  "pool_rank_policy": {
+    "pool_cutoffs": {
+      "P1": {
+        "rrf": 20
+      },
+      "P2": {
+        "rrf": 30
+      },
+      "P3": {
+        "rrf": 50
+      },
+      "P4": {
+        "bm25": 10,
+        "dense": 10
+      },
+      "P5": {
+        "bm25": 15,
+        "dense": 15
+      },
+      "P6": {
+        "bm25": 25,
+        "dense": 25
+      },
+      "DEV_SUPERSET": {
+        "rrf": 50,
+        "bm25": 50,
+        "dense": 50
+      },
+      "POLICY_UNION": {
+        "rrf": 50,
+        "bm25": 25,
+        "dense": 25
+      }
+    },
+    "content_source": "analysis/reranking/candidate_documents.jsonl",
+    "parent_dedup_key": "document_id",
+    "parent_score": "maximum Jina score across all original chunks",
+    "fusion": {
+      "formula": "w_rrf/(60+rrf_rank) + w_jina/(60+jina_rank)",
+      "k": 60,
+      "weights": {
+        "A": {
+          "w_rrf": 1,
+          "w_jina": 1
+        },
+        "B": {
+          "w_rrf": 2,
+          "w_jina": 1
+        },
+        "C": {
+          "w_rrf": 3,
+          "w_jina": 1
+        },
+        "D": {
+          "w_rrf": 4,
+          "w_jina": 1
+        }
+      },
+      "rrf_rank": "contiguous within the selected pool, ordered by original RRF position; original ranks remain in candidate metadata",
+      "jina_rank": "within the same selected parent pool",
+      "missing_rank": "zero contribution from the missing lane",
+      "tie_break": "ascending document ID"
+    }
+  }
+}
